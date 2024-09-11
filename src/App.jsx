@@ -6,7 +6,10 @@ function App() {
     <>
       <div>
         <h1>To-Do List</h1>
-        <TodoList />
+        <div className="container">
+          <div className="item"><h3>수평 테스트</h3></div>
+          <div className="item"><TodoList /></div>
+        </div>
       </div>
     </>
   )
