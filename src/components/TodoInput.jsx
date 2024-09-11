@@ -28,7 +28,6 @@ function TodoInput() {
         throw new Error('Network response was not ok');
       }
 
-      const result = await response.json();
       setSuccess('Todo added successfully!');
       setContent('');
       setDueDate('');
@@ -47,11 +46,13 @@ function TodoInput() {
             Content: <input type="text" value={content} onChange={(e) => setContent(e.target.value)} required />
           </label>
         </div>
+        <br />
         <div>
           <label>
             Due Date: <input type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)} required />
           </label>
         </div>
+        <br />
         <button type="submit">Add Todo</button>
       </form>
       {success && <p style={{ color: 'green' }}>{success}</p>}
