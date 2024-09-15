@@ -27,14 +27,15 @@ function App() {
   return (
     <>
       <AppRouter />
+      {!isLoggedIn && (
+        <div className="homeButton">
+          <button style={{ marginRight: "10px" }} onClick={goToSignup}>
+            회원가입
+          </button>
 
-      <div className="homeButton">
-        <button style={{ marginRight: "10px" }} onClick={goToSignup}>
-          회원가입
-        </button>
-
-        <button onClick={goToLogin}>로그인</button>
-      </div>
+          <button onClick={goToLogin}>로그인</button>
+        </div>
+      )}
 
       <h1>To-Do List</h1>
 

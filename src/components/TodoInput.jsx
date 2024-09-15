@@ -1,9 +1,8 @@
 import { useState } from "react";
 
 function TodoInput() {
-
-  const [content, setContent] = useState('');
-  const [dueDate, setDueDate] = useState('');
+  const [content, setContent] = useState("");
+  const [dueDate, setDueDate] = useState("");
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
@@ -15,22 +14,23 @@ function TodoInput() {
 
     try {
       // POST 요청 보내기
-      const response = await fetch('http://localhost:8080/api/todos', {
-        method: 'POST',
+      const response = await fetch("http://localhost:8080/api/todos", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
+          Authorization: localStorage.getItem("token"),
         },
         body: JSON.stringify(todoData),
       });
 
       // 응답 처리
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error("Network response was not ok");
       }
 
-      setSuccess('Todo added successfully!');
-      setContent('');
-      setDueDate('');
+      setSuccess("Todo added successfully!");
+      setContent("");
+      setDueDate("");
       window.location.reload();
     } catch (err) {
       setError(err.message);
@@ -43,23 +43,34 @@ function TodoInput() {
       <form onSubmit={handleSubmit}>
         <div>
           <label>
-            Content: <input type="text" value={content} onChange={(e) => setContent(e.target.value)} required />
+            Content:{" "}
+            <input
+              type="text"
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              required
+            />
           </label>
         </div>
         <br />
         <div>
           <label>
-            Due Date: <input type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)} required />
+            Due Date:{" "}
+            <input
+              type="date"
+              value={dueDate}
+              onChange={(e) => setDueDate(e.target.value)}
+              required
+            />
           </label>
         </div>
         <br />
         <button type="submit">Add Todo</button>
       </form>
-      {success && <p style={{ color: 'green' }}>{success}</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {success && <p style={{ color: "green" }}>{success}</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );
-
 }
 
 export default TodoInput;
