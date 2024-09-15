@@ -17,7 +17,7 @@ function Login() {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8080/api/login", {
+      const response = await fetch("http://localhost:8080/api/members/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -52,8 +52,8 @@ function Login() {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
+    <div style={{ border: "1px solid", padding: "20px" }}>
+      <h2>로그인</h2>
       <form onSubmit={loginRequest}>
         <div>
           <label htmlFor="email">Email: </label>

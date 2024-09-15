@@ -26,7 +26,7 @@ function Signup() {
 
     try {
       // POST 요청을 보냅니다.
-      const response = await fetch("http://localhost:8080/api/signup", {
+      const response = await fetch("http://localhost:8080/api/members/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -53,8 +53,8 @@ function Signup() {
   };
 
   return (
-    <div>
-      <h2>Sign Up</h2>
+    <div style={{ border: "1px solid", padding: "20px" }}>
+      <h2>회원가입</h2>
       <form onSubmit={signupRequest}>
         <div>
           <label>Email: </label>
@@ -68,12 +68,6 @@ function Signup() {
         </div>
         <br />
         <div>
-          <p>비밀번호 규칙</p>
-          <p>8자 이상이어야 합니다.</p>
-          <p>
-            비밀번호는 영소문자, 숫자, 특수문자(!,?,@,#,$,%,^,&,*,_,=,+,-)가 한
-            개 이상 포함되어야 합니다.
-          </p>
           <label>Password: </label>
           <input
             type={showPassword ? "text" : "password"}
@@ -85,6 +79,12 @@ function Signup() {
           <button type="button" onClick={togglePasswordVisibility}>
             {showPassword ? "Hide" : "Show"}
           </button>
+          <p>비밀번호 규칙</p>
+          <p>8자 이상이어야 합니다.</p>
+          <p>
+            비밀번호는 영소문자, 숫자, 특수문자(!,?,@,#,$,%,^,&,*,_,=,+,-)가 한
+            개 이상 포함되어야 합니다.
+          </p>
         </div>
         <br />
         <div>
