@@ -18,3 +18,10 @@
   border: 1px solid white;
   padding: 10px;
 }
+
+.homeButton {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  text-align: right;
+}
