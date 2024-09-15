@@ -3,9 +3,18 @@ import TodoList from "./components/TodoList";
 import TodoInput from "./components/TodoInput";
 import AppRouter from "./components/AppRouter";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  });
 
   const goToSignup = () => {
     navigate("/signup");
@@ -30,16 +39,18 @@ function App() {
       <h1>To-Do List</h1>
 
       {/* 토큰이 있으면 보여주기, 없으면 보여주지 않기 */}
-      <div>
-        <div className="container">
-          <div className="item">
-            <TodoInput />
-          </div>
-          <div className="item">
-            <TodoList />
+      {isLoggedIn && (
+        <div>
+          <div className="container">
+            <div className="item">
+              <TodoInput />
+            </div>
+            <div className="item">
+              <TodoList />
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

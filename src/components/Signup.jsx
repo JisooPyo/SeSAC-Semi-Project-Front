@@ -6,8 +6,13 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [nickname, setNickname] = useState("");
   const [message, setMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
 
   const signupRequest = async (e) => {
     e.preventDefault();
@@ -71,12 +76,15 @@ function Signup() {
           </p>
           <label>Password: </label>
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             placeholder="비밀번호를 입력하세요"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+          <button type="button" onClick={togglePasswordVisibility}>
+            {showPassword ? "Hide" : "Show"}
+          </button>
         </div>
         <br />
         <div>
