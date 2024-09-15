@@ -53,57 +53,68 @@ function Signup() {
   };
 
   return (
-    <div style={{ border: "1px solid", padding: "20px" }}>
-      <h2>회원가입</h2>
-      <form onSubmit={signupRequest}>
-        <div>
-          <label>Email: </label>
-          <input
-            type="email"
-            placeholder="이메일을 입력하세요"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <br />
-        <div>
-          <label>Password: </label>
-          <input
-            type={showPassword ? "text" : "password"}
-            placeholder="비밀번호를 입력하세요"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <button type="button" onClick={togglePasswordVisibility}>
-            {showPassword ? "Hide" : "Show"}
-          </button>
-          <p>비밀번호 규칙</p>
-          <p>8자 이상이어야 합니다.</p>
-          <p>
-            비밀번호는 영소문자, 숫자, 특수문자(!,?,@,#,$,%,^,&,*,_,=,+,-)가 한
-            개 이상 포함되어야 합니다.
-          </p>
-        </div>
-        <br />
-        <div>
-          <label>Nickname: </label>
-          <input
-            type="text"
-            placeholder="닉네임을 입력하세요"
-            value={nickname}
-            onChange={(e) => setNickname(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <p style={{ color: "yellow" }}>{message}</p>
-        </div>
-        <br />
-        <button type="submit">Sign Up</button>
-      </form>
-    </div>
+    <>
+      <div>
+        <h2>회원가입</h2>
+
+        <form onSubmit={signupRequest}>
+          <div className="container" style={{ textAlign: "left" }}>
+            <div className="item" style={{ padding: "20px" }}>
+              <div>
+                <label>Email: </label>
+                <input
+                  type="email"
+                  placeholder="이메일을 입력하세요"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+              <br />
+
+              <div>
+                <label>Password: </label>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="비밀번호를 입력하세요"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <button type="button" onClick={togglePasswordVisibility}>
+                  {showPassword ? "Hide" : "Show"}
+                </button>
+              </div>
+              <br />
+
+              <div>
+                <label>Nickname: </label>
+                <input
+                  type="text"
+                  placeholder="닉네임을 입력하세요"
+                  value={nickname}
+                  onChange={(e) => setNickname(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+            <div className="item">
+              <p> --- 비밀번호 규칙 --- </p>
+              <p>8자 이상</p>
+              <p>영소문자, 숫자 한 개 이상 포함</p>
+              <p>특수문자(!,?,@,#,$,%,^,&,*,_,=,+,-) 한 개 이상 포함</p>
+            </div>
+          </div>
+          <div>
+            <p style={{ color: "yellow" }}>{message}</p>
+          </div>
+          <br />
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <button type="submit">Sign Up</button>
+          </div>
+        </form>
+      </div>
+    </>
   );
 }
 

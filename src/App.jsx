@@ -45,6 +45,13 @@ function App() {
     navigate("/login");
   };
 
+  const goToLogOut = () => {
+    localStorage.removeItem("token");
+    console.log("Token removed from localStorage");
+    navigate("/");
+    window.location.reload();
+  };
+
   return (
     <>
       <h1>To-Do List</h1>
@@ -67,6 +74,7 @@ function App() {
       {isLoggedIn && (
         <>
           <div className="homeTop">
+            <button onClick={goToLogOut}>로그아웃</button>
             <p>{nickname}님 반가워요!</p>
           </div>
           <div className="container">

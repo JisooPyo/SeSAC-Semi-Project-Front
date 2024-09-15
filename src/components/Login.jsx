@@ -52,42 +52,47 @@ function Login() {
   };
 
   return (
-    <div style={{ border: "1px solid", padding: "20px" }}>
+    <>
       <h2>로그인</h2>
-      <form onSubmit={loginRequest}>
-        <div>
-          <label htmlFor="email">Email: </label>
-          <input
-            type="email"
-            placeholder="이메일을 입력하세요"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <br />
-        <div>
-          <label htmlFor="password">Password: </label>
-          <input
-            type={showPassword ? "text" : "password"}
-            id="password"
-            placeholder="비밀번호를 입력하세요"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <button type="button" onClick={togglePasswordVisibility}>
-            {showPassword ? "Hide" : "Show"}
-          </button>
-        </div>
-        <div>
-          <p style={{ color: "yellow" }}>{message}</p>
-        </div>
-        <br />
-        <button type="submit">Login</button>
-      </form>
-    </div>
+      <div style={{ border: "1px solid", padding: "30px" }}>
+        <form onSubmit={loginRequest}>
+          <div style={{ textAlign: "left" }}>
+            <div>
+              <label htmlFor="email">Email: </label>
+              <input
+                type="email"
+                placeholder="이메일을 입력하세요"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <br />
+            <div>
+              <label htmlFor="password">Password: </label>
+              <input
+                type={showPassword ? "text" : "password"}
+                id="password"
+                placeholder="비밀번호를 입력하세요"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <button type="button" onClick={togglePasswordVisibility}>
+                {showPassword ? "Hide" : "Show"}
+              </button>
+            </div>
+            <div>
+              <p style={{ color: "yellow" }}>{message}</p>
+            </div>
+            <br />
+          </div>
+
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    </>
   );
 }
 
